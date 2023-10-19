@@ -31,19 +31,31 @@ public class SendMoney extends HttpServlet
 		PrintWriter pw=resp.getWriter();
 		try 
 		{
+
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/online_banking_system","root","root");
 			
 			PreparedStatement ps1=conn.prepareStatement("select * from customer where accountnumber=? and pincode=?");
 			ps1.setString(1, accountnumber);
 			ps1.setString(2, pincode);
 			ResultSet rs1=ps1.executeQuery();
-			float senders_balance=rs1.getFloat(5);
+			float senders_balance=0;
+			
+			while (rs1.next()) {
+
+				senders_balance= rs1.getFloat(5);
+				
+			}
 			
 			PreparedStatement ps2=conn.prepareStatement("select * from customer where accountnumber=?");
 			ps2.setString(1, Recipient_accountnumber);
 			ResultSet rs2=ps2.executeQuery();
-			rs2.getFloat(5);
-			float recievers_balance= rs2.getFloat(5);
+			float recievers_balance = 0;
+			while (rs2.next()) {
+
+				recievers_balance= rs2.getFloat(5);
+				
+			}
 			
 			if(amount1<senders_balance)
 			{
@@ -73,6 +85,9 @@ public class SendMoney extends HttpServlet
 		
 		catch (SQLException e) 
 		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

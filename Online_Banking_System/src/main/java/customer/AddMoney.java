@@ -5,7 +5,6 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -17,6 +16,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/AddMoney")
 public class AddMoney extends HttpServlet
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
 	{
@@ -26,9 +30,11 @@ public class AddMoney extends HttpServlet
 		
 		try 
 		{
+
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/online_banking_system","root","root");
-			PreparedStatement ps=conn.prepareStatement("update customer set money=? where accountnumber=? and pincode=?");
-			ps.setString(1,amount);
+			PreparedStatement ps=conn.prepareStatement("update customer set balance=? where accountnumber=? and pincode=?");
+			ps.setString(1, amount);
 			ps.setString(2, AccountNumber);
 			ps.setString(3, PinCode);
 			
@@ -39,6 +45,9 @@ public class AddMoney extends HttpServlet
 		} 
 		catch (SQLException e) 
 		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

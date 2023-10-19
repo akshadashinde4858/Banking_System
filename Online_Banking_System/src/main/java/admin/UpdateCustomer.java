@@ -27,8 +27,9 @@ public class UpdateCustomer extends HttpServlet
 		
 		try 
 		{
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/online_banking_system","root","root");
-			PreparedStatement ps=conn.prepareStatement("update customer set name=? pincode=? where id=? and pincode=?");
+			PreparedStatement ps=conn.prepareStatement("update customer set name=?, pincode=? where id=? and pincode=?");
 			ps.setString(1, newname);
 			ps.setInt(2, Integer.parseInt(newpin));
 			ps.setInt(3, Integer.parseInt(id));
@@ -47,6 +48,9 @@ public class UpdateCustomer extends HttpServlet
 		} 
 		catch (SQLException e) 
 		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

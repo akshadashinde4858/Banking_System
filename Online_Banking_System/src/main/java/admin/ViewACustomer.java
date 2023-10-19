@@ -7,9 +7,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
-import javax.servlet.GenericServlet;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,38 +15,38 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/ViewACustomer")
-public class ViewACustomer extends HttpServlet
-{
+public class ViewACustomer extends HttpServlet {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
-	{
-		String id=req.getParameter("id");
-		try 
-		{
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String id = req.getParameter("id");
+		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/online_banking_system","root","root");
-			PreparedStatement ps=conn.prepareStatement("select * from customer where id=?");
-			ps.setString(1,id);
-			ResultSet rs=ps.executeQuery();
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/online_banking_system", "root",
+					"root");
+			PreparedStatement ps = conn.prepareStatement("select * from customer where id=?");
+			ps.setString(1, id);
+			ResultSet rs = ps.executeQuery();
 //			System.out.println(rs.next());
-			PrintWriter pw=resp.getWriter();
-			
-			if(rs.next())
-			{
-				pw.print("Data of Id: "+id);
-			}else
-			{
+			PrintWriter pw = resp.getWriter();
+
+			if (rs.next()) {
+				resp.getWriter().println(rs.getInt("id") + ", " + rs.getString("name") + ", " + rs.getLong(3) + ", " + ", "
+						+ rs.getInt("pincode") + rs.getFloat("balance"));
+			} else {
 				pw.print("Data Not found");
 			}
-		} 
-		catch (ClassNotFoundException e) 
-		{
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 }

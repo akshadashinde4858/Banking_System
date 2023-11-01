@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Admin Page</title>
+</head>
+<body>
+	<form action="Admin" method="post">
+		<fieldset align="center">
+				<legend align="center" style="color: black;">Create Account</legend>
+				<label>User Id:</label>
+				<input type="number" name="id" placeholder="id" required><br><br>
+				<label>UserName:</label>
+				<input type="text" name="un" placeholder="username" required><br><br>
+				<label>Email:</label>
+				<input type="email" name="email" placeholder="email" required><br><br>
+				<label>PassWord:</label>
+				<input type="PassWord" name="pwd" placeholder="password" required><br><br>
+				
+				<input type="submit" name="register" value="Register" style="background-color: skyblue;">
+				<input type="reset" name="cncl" value="Cancel" style="background-color: red;"><br><br>
+				Already Have an Account <a href="AdminLogIn.html">LogIn</a>
+		</fieldset>
+	</form>
+</body>
+</html>

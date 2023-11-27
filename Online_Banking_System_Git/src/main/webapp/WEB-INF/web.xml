@@ -4,4 +4,18 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+
+
+<!--    <filter>
+  	<filter-name>Authorization</filter-name>
+  	<filter-class>filters.Authorization</filter-class>
+  </filter>
+  
+  <filter-mapping>
+  	<filter-name>Authorization</filter-name>
+  	<url-pattern>AdminLogIn.java</url-pattern>
+  	<url-pattern>CustomerLogIn.java</url-pattern>
+  </filter-mapping>  -->
+ 
+  
 </web-app>

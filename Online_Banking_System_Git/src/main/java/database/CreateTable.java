@@ -17,7 +17,7 @@ public class CreateTable
 		System.out.println("statement created successfully");
 		st.execute("create table admin(id int primary key,name varchar(30),email varchar(30),password varchar(30))");
 		System.out.println("admin table created successfully");
-		st.execute("create table customer(id int primary key,name varchar(30),accountnumber long,pincode int,balance float)");
+		st.execute("create table customer(id int primary key,name varchar(30),accountnumber long,pincode int,balance float,value int)");
 		System.out.println("customer table created successfully");
 	}
 }

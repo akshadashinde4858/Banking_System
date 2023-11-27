@@ -1,12 +1,59 @@
 <html>
-<head><title>HomePage</title></head>
-<body>
+<head>
+<!--  <link rel="stylesheet" href="styles.css">   -->
+<title>HomePage</title></head>
+<style type="text/css">
+.heading
+{
+	background-image: linear-gradient(to bottom, red,orange,yellow,green);
+}
+
+.B
+{
+	background-image: url("D:\GitHub Codes\Banking_System\images\home page image 2.jpeg");
+	background-color: #D3D3D3;
+}
+</style>
+
+<style type="text/css">
+		.Rs
+		{
+			font-size: 100px;
+			color: black;
+			animation-name: blink;
+			animation-duration: 1s;
+			animation-iteration-count: infinite;
+		}
+		@keyframes blink
+		{
+			50%{opacity: 0;}
+		}
+		.money
+		{
+			font-size: 100px;
+			color: black;
+			animation-name: blink;
+			animation-duration: 1s;
+			animation-iteration-count: infinite;
+		}
+	</style>
+	
+<body align="center" class="B">
 <form>
-<fieldset>
-<legend align="center">BANK SYSTEM</legend>
+<fieldset align="center">
+<h3><legend align="center" class="heading">ONLINE BANK SYSTEM</legend></h3>
 <a href="AdminHome.html">Admin</a><br><br>
 <a href="CustomerHome.html">Customer</a>
 </fieldset>
 </form>
+<img alt="image" src="D:\GitHub Codes\Banking_System\images\home page image 2.jpeg">
+
+	<marquee><span class="Rs">  &#128176</span></marquee>
+	<center><span class="money">  &#128181</span></center>
+	<div>
+		<marquee direction="right"><span class="Rs">&#128176</span></marquee>
+	</div>
+	
+	
 </body>
 </html>
